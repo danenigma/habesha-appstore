@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head><title>home</title>
+	</head>
+	<body>  
+		<a href="/login/">Login</a>
+		<br>
+		<a href="/signup/">signup</a>
+		<br>				
+                <h1>APPS</h1>
+		{%for app in apps %}
+		
+                <h1>{{app.name}}</h1>
+		<img src  = "{{MEDIA_URL}}/{{app.screen_shot}}" alt = " width = 20" /> <br>
+		<a href="/media/{{app.screen_shot}}/">download</a>	
+		{%endfor%}
+	</body>
+</html>
+

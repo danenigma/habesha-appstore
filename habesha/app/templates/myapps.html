@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+	   <meta charset  = "utf-8">
+	   <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+	   <meta name = "viewport" content  = "width = divice-width , initial-scale = 1">
+	   <title>Absynia App Store</title>
+       <link rel = "stylesheet" href = "{% static 'css/bootstrap.css' %}">
+       <link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+	   <script src= "{% static  'js/jquery-2.1.4.js' %}" ></script>  
+	   <script src= "{% static  'js/bootstrap.js' %}" ></script>
+	   <script src="{% static '/js/ie-emulation-modes-warning.js' %}"></script>
+        
+	</head>
+	<body>
+	
+	<div class = "col-md-12"><h1>APPS YOU HAVE DOWNLOADED</h1><a href="/home/" class="btn btn-primary" role="button">Home</a></div>
+			{%for h in hist %}
+			
+				<div class = "row">
+					<div class = "col-md-6">					
+					</div>
+
+					<div class = "col-md-4">	
+						<h1>{{h.app.name}}</h1>
+						<hr>				
+						<img class  = "img-responsive" src = "{{MEDIA_URL}}/{{h.app.screen_shot}}" ,alt = "logo">
+					</div>
+					
+				</div>			
+
+			{%endfor%}
+
+
+
+
+	</body>
+	

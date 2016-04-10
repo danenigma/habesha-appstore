@@ -1,0 +1,43 @@
+.container2 {
+  width: 800px !important;
+}
+.row{
+
+
+padding-bottom: 10px;
+
+}
+body{
+
+background-color:#3E3E3E; 
+
+
+}
+.pagination{
+
+margin-left: 70% !important;
+
+
+}
+h1{
+
+  color: #137ab0;!important;
+
+
+}
+
+h2{
+
+color:#137ab0;!important;
+	
+}
+h3{
+
+color:#137ab0;!important;
+	
+}
+h4{
+
+color: #137ab0;
+
+}

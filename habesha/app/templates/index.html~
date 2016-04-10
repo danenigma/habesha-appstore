@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+	   <meta charset  = "utf-8">
+	   <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+	   <meta name = "viewport" content  = "width = divice-width , initial-scale = 1">
+	   <title>Abyssinia App Store</title>
+       <link rel = "stylesheet" href = "{% static 'css/bootstrap.css' %}">
+       <link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+	   <script src= "{% static  'js/jquery-2.1.4.js' %}" ></script>  
+	   <script src= "{% static  'js/bootstrap.js' %}" ></script>
+	   <script src="{% static '/js/ie-emulation-modes-warning.js' %}"></script>
+        
+	</head>
+	<body>
+	
+
+		<!-- Modal -->
+
+		<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">App Discrption</h4>
+		        </div>
+		        <div class="modal-body">
+
+		      		   <img class  = "img-responsive" src = "{% static 'img/3.png' %}" data-toggle="modal" data-target="#project1">
+		               
+		               <p>Donec id elit non mi porta gravida at eget metus. Fusce
+						   apibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+						   ermentum massa justo sit amet risus. Etiam porta sem malesuada magna 
+						   mollis euismod. Donec sed odio dui. 
+						</p>
+
+		        </div>
+		        <div class="modal-footer">  		        		        
+		        <a class="btn btn-primary" role="button"  href="#">Rate</a> 
+		        <a class="btn btn-primary" role="button"  href="{% static 'vid/ADWA.apk' %}">Download</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	   <div class = "container">
+		<div class= "row">
+			<div class  = "col-md-6">
+				<img class  = "img-responsive" src = "{% static 'img/icon.png'  %}" ,alt = "logo">
+			</div>
+
+			<div class  = "col-md-6 text-right">
+				<h1>Abyssinia App<h1>
+				<h4>Store<h4>
+				<a class="btn btn-primary" role="button"  href="/user/">Login</a>
+				<a class="btn btn-primary" role="button"  href="/signup/">SignUp</a>
+			</div>	
+		</div>
+
+	    <div class  = "row">
+		     <div class = "col-md-12">
+			<hr>	
+		     </div>		
+		</div>	
+
+	    <div class  = "row">
+	    	 <div class = "col-md-1"></div>
+		     <div class = "col-md-6">
+				<ul class="nav nav-tabs " role="tablist">
+					<li role="presentation" ><a href="/home/">Home</a></li>
+
+					<li role="presentation" class="dropdown">
+				    		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      			Catagories <span class="caret"></span>
+				    			</a>
+				    			<ul class="dropdown-menu">		
+				    				  <li><a href="/game/">Games</a></li>
+				    				  <li><a href="/educational/">Educational</a></li>
+								  <li><a href="/social/">Social</a></li>
+				    				  
+				    			</ul>
+				  	</li>
+					<li role="presentation"><a href="/login/">Developer</a></li>
+					<li role="presentation"><a href="/home/" >About us</a></li>
+										<li role="presentation" class="dropdown">
+				    		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      			settings <span class="caret"></span>
+				    			</a>
+				    			<ul class="dropdown-menu">		
+				    				  <li><a href="/logout/">Logout</a></li>
+				    				  
+				    			</ul>
+				  	</li>	
+					 	
+			      </ul>
+		     </div>	
+		     <div class = "col-md-5">
+					<form class="navbar-form navbar-left" role="search" action = "/search/" method = "post">
+						 {% csrf_token %}
+					  <div class="form-group">
+					    	<input type="text" name = "item"  class="form-control" placeholder="Search by name ">
+					  	</div>
+						  	<button type="submit" class="btn btn-default">Search</button>
+					</form>	
+	
+		     </div>			
+		
+		     </div>
+		</div>		   				   	
+	   <div class  = "row">
+	   	   <div class ="col-md-2">	
+				<ul class="nav nav-pills nav-stacked">
+				  <li role="presentation"><a href="/top/">Top Charts</a></li>
+				  <li role="presentation"><a href="/new/">New Releases</a></li>
+				  <li role="presentation"><a href="/myapp/">My apps</a></li>
+				</ul>
+           </div>
+
+		<div class ="col-md-10">
+			<img class  = "img-responsive" src = "{% static 'img/back.png' %}">					  <!-- Tab panes -->			
+		 </div>
+		</div>
+		{%if cat == 'educational' or cat = 'all'%}
+		<div class  = "row">
+						
+ 			<div class ="col-md-2"></div>
+			<div class ="col-md-10">
+			    <h2>Education Apps</h2>
+			    <div class = "col-md-9">
+			    <hr>
+				</div>
+			</div>
+		</div>
+	   </div>
+	</div>
+		{%endif%}
+	<div class  = "container container2" >
+		<div class  = "row">
+		<div class = "row">
+          {% for app in apps %} 
+          {% if app.catagory == 'educational'%}
+		  <div class=" col-md-2">
+		    <div class="thumbnail">
+		      <img class  = "img-responsive" src = "{{MEDIA_URL}}/{{app.screen_shot}}" ,alt = "logo" data-toggle="modal" data-target="#project1">
+		     
+		      <div class="caption">
+		        <h4>{{app.name}}</h4>
+		        
+		        <p><a href="/{{app.id}}/" class="btn btn-primary" role="button">Download</a> 
+
+		      </div>
+		    </div>
+		  </div>
+		  {% endif %}
+		  {% endfor %}
+
+		</div>
+	   </div>
+	</div>
+	{%if cat == 'game' or cat = 'all'%}
+	  <div class  = "row">				
+ 		   <div class ="col-md-2"></div>
+			 <div class ="col-md-10">
+			    <h1>Games</h1>
+			    <div class = "col-md-9">
+			    <hr>
+				</div>
+			</div>
+      </div>
+	{%endif%}
+	<div class  = "container container2" >
+		<div class  = "row">
+		<div class = "row">
+          {% for app in apps %} 
+          {% if app.catagory == 'game'%}
+		  <div class=" col-md-2">
+		    <div class="thumbnail">
+		      <img class  = "img-responsive" src = "{{MEDIA_URL}}/{{app.screen_shot}}" ,alt = "logo" data-toggle="modal" data-target="#project1">
+		     
+		      <div class="caption">
+		        <h4>{{app.name}}</h4>
+		        
+		        <p><a href="/{{app.id}}/" class="btn btn-primary" role="button">Download</a> 
+		
+		
+		      </div>
+		    </div>
+		  </div>
+		  {% endif %}
+		  {% endfor %}
+
+		</div>
+	   </div>
+	</div>
+		{%if cat == 'social' or cat = 'all'%}
+	  <div class  = "row">				
+ 		   <div class ="col-md-2"></div>
+			 <div class ="col-md-10">
+			    <h2>Social & Communication Apps </h2>
+			    <div class = "col-md-9">
+			    <hr>
+				</div>
+			</div>
+      </div>
+	{%endif%}	
+		<div class  = "container container2" >
+		<div class  = "row">
+		<div class = "row">
+          {% for app in apps %} 
+          {% if app.catagory == 'social'%}
+		  <div class=" col-md-2">
+		    <div class="thumbnail">
+		      <img class  = "img-responsive" src = "{{MEDIA_URL}}/{{app.screen_shot}}" ,alt = "logo" data-toggle="modal" data-target="#project1">
+		     
+		      <div class="caption">
+		        <h4>{{app.name}}</h4>
+		        
+		        <p><a href="/{{app.id}}/" class="btn btn-primary" role="button">Download</a> 
+		
+		
+		      </div>
+		    </div>
+		  </div>
+		  {% endif %}
+		  {% endfor %}
+
+		</div>
+	   </div>
+	</div>
+
+		<div class = "row">
+		<nav>
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="/login/">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+        </dev>    
+	</body>
